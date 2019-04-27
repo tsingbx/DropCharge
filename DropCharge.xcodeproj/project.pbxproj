@@ -49,6 +49,9 @@
 		A2E9BE582274230E00F9CCAD /* Fall.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9BE572274230E00F9CCAD /* Fall.swift */; };
 		A2E9BE5A2274234600F9CCAD /* Lava.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9BE592274234600F9CCAD /* Lava.swift */; };
 		A2E9BE5C2274238400F9CCAD /* Dead.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9BE5B2274238400F9CCAD /* Dead.swift */; };
+		A2E9BE6022743FCA00F9CCAD /* Lava.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2E9BE5E22743FCA00F9CCAD /* Lava.sks */; };
+		A2E9BE6122743FCA00F9CCAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2E9BE5F22743FCA00F9CCAD /* Assets.xcassets */; };
+		A2E9BE632274480A00F9CCAD /* SmokeTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2E9BE622274480A00F9CCAD /* SmokeTrail.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +99,9 @@
 		A2E9BE572274230E00F9CCAD /* Fall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fall.swift; sourceTree = "<group>"; };
 		A2E9BE592274234600F9CCAD /* Lava.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lava.swift; sourceTree = "<group>"; };
 		A2E9BE5B2274238400F9CCAD /* Dead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dead.swift; sourceTree = "<group>"; };
+		A2E9BE5E22743FCA00F9CCAD /* Lava.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Lava.sks; sourceTree = "<group>"; };
+		A2E9BE5F22743FCA00F9CCAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A2E9BE622274480A00F9CCAD /* SmokeTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeTrail.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +134,7 @@
 		A22DB34C2268612900FD825F /* DropCharge */ = {
 			isa = PBXGroup;
 			children = (
+				A2E9BE5D22743F4D00F9CCAD /* Particles */,
 				A2E9BE52227420B200F9CCAD /* Player States */,
 				A2E9BE512274208F00F9CCAD /* Game States */,
 				A22DB36A2268771F00FD825F /* SKTUtils */,
@@ -207,6 +214,16 @@
 			path = "Player States";
 			sourceTree = "<group>";
 		};
+		A2E9BE5D22743F4D00F9CCAD /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				A2E9BE5E22743FCA00F9CCAD /* Lava.sks */,
+				A2E9BE5F22743FCA00F9CCAD /* Assets.xcassets */,
+				A2E9BE622274480A00F9CCAD /* SmokeTrail.sks */,
+			);
+			path = Particles;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -274,15 +291,18 @@
 				A22DB3502268612900FD825F /* GameScene.sks in Resources */,
 				A2E9BE4722731B2600F9CCAD /* PlatformArrow.sks in Resources */,
 				A22DB35B2268612D00FD825F /* Assets.xcassets in Resources */,
+				A2E9BE632274480A00F9CCAD /* SmokeTrail.sks in Resources */,
 				A2E9BE4622731B2600F9CCAD /* CoinDiagonal.sks in Resources */,
 				A22DB35E2268612D00FD825F /* LaunchScreen.storyboard in Resources */,
 				A2E9BE4322731B2600F9CCAD /* CoinSArrow.sks in Resources */,
 				A2E9BE3422731AFF00F9CCAD /* BreakArrow.sks in Resources */,
 				A2E9BE3222730F4000F9CCAD /* Break5Across.sks in Resources */,
+				A2E9BE6122743FCA00F9CCAD /* Assets.xcassets in Resources */,
 				A2E9BE3822731B1500F9CCAD /* Coin5Across.sks in Resources */,
 				A2E9BE3622731B0B00F9CCAD /* BreakDiagonal.sks in Resources */,
 				A22DB3672268700D00FD825F /* Platform5Across.sks in Resources */,
 				A2E9BE4222731B2600F9CCAD /* CoinS5Across.sks in Resources */,
+				A2E9BE6022743FCA00F9CCAD /* Lava.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
