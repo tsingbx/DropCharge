@@ -50,11 +50,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var deltaTime: TimeInterval = 0
     var lives = 3
     lazy var gameState: GKStateMachine = GKStateMachine(states: [WaitingForTap(scene: self), WaitingForBomb(scene: self), Playing(scene: self), GameOver(scene: self)])
+    lazy var playerState: GKStateMachine = GKStateMachine(states: [Idle(scene: self),Jump(scene: self), Fall(scene: self), Lava(scene: self), Dead(scene: self)])
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         setupNodes()
         setupLevel()
-        setupPlayer()
+        //setupPlayer()
+        playerState.enter(Idle.self)
         setupCoreMotion()
         setCameraPosition(position: CGPoint(x: size.width/2, y: size.height/2))
         gameState.enter(WaitingForTap.self)
@@ -133,6 +135,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         else if playerPosition.x > size.width + player.size.width/2 {
             playerPosition = convert(CGPoint(x: -player.size.width/2, y: 0), to: fgNode)
             player.position.x = playerPosition.x
+        }
+        if player.physicsBody!.velocity.dy < 0 {
+            playerState.enter(Fall.self)
+        } else {
+            playerState.enter(Jump.self)
         }
     }
     
@@ -327,9 +334,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func updateCollisionLava() {
         if player.position.y < lava.position.y + 90 {
-            boostPlayer()
-            lives = lives - 1
+            playerState.enter(Lava.self)
             if lives <= 0 {
+                playerState.enter(Dead.self)
                 gameState.enter(GameOver.self)
             }
         }

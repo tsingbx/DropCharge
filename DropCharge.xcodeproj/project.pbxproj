@@ -44,6 +44,11 @@
 		A2E9BE4C2274056E00F9CCAD /* WaitingForBomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9BE4B2274056E00F9CCAD /* WaitingForBomb.swift */; };
 		A2E9BE4E22740A7900F9CCAD /* Playing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9BE4D22740A7900F9CCAD /* Playing.swift */; };
 		A2E9BE5022741B1600F9CCAD /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9BE4F22741B1600F9CCAD /* GameOver.swift */; };
+		A2E9BE54227420CD00F9CCAD /* Idle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9BE53227420CD00F9CCAD /* Idle.swift */; };
+		A2E9BE562274220200F9CCAD /* Jump.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9BE552274220200F9CCAD /* Jump.swift */; };
+		A2E9BE582274230E00F9CCAD /* Fall.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9BE572274230E00F9CCAD /* Fall.swift */; };
+		A2E9BE5A2274234600F9CCAD /* Lava.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9BE592274234600F9CCAD /* Lava.swift */; };
+		A2E9BE5C2274238400F9CCAD /* Dead.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9BE5B2274238400F9CCAD /* Dead.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +91,11 @@
 		A2E9BE4B2274056E00F9CCAD /* WaitingForBomb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForBomb.swift; sourceTree = "<group>"; };
 		A2E9BE4D22740A7900F9CCAD /* Playing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playing.swift; sourceTree = "<group>"; };
 		A2E9BE4F22741B1600F9CCAD /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
+		A2E9BE53227420CD00F9CCAD /* Idle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Idle.swift; sourceTree = "<group>"; };
+		A2E9BE552274220200F9CCAD /* Jump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jump.swift; sourceTree = "<group>"; };
+		A2E9BE572274230E00F9CCAD /* Fall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fall.swift; sourceTree = "<group>"; };
+		A2E9BE592274234600F9CCAD /* Lava.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lava.swift; sourceTree = "<group>"; };
+		A2E9BE5B2274238400F9CCAD /* Dead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dead.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +128,8 @@
 		A22DB34C2268612900FD825F /* DropCharge */ = {
 			isa = PBXGroup;
 			children = (
+				A2E9BE52227420B200F9CCAD /* Player States */,
+				A2E9BE512274208F00F9CCAD /* Game States */,
 				A22DB36A2268771F00FD825F /* SKTUtils */,
 				A22DB36522686FC900FD825F /* Scene Files */,
 				A22DB34D2268612900FD825F /* AppDelegate.swift */,
@@ -127,10 +139,6 @@
 				A22DB35A2268612D00FD825F /* Assets.xcassets */,
 				A22DB35C2268612D00FD825F /* LaunchScreen.storyboard */,
 				A22DB35F2268612D00FD825F /* Info.plist */,
-				A2E9BE49227400C800F9CCAD /* WaitingForTap.swift */,
-				A2E9BE4B2274056E00F9CCAD /* WaitingForBomb.swift */,
-				A2E9BE4D22740A7900F9CCAD /* Playing.swift */,
-				A2E9BE4F22741B1600F9CCAD /* GameOver.swift */,
 			);
 			path = DropCharge;
 			sourceTree = "<group>";
@@ -174,6 +182,29 @@
 				A22DB3762268771F00FD825F /* CGFloat+Extensions.swift */,
 			);
 			path = SKTUtils;
+			sourceTree = "<group>";
+		};
+		A2E9BE512274208F00F9CCAD /* Game States */ = {
+			isa = PBXGroup;
+			children = (
+				A2E9BE49227400C800F9CCAD /* WaitingForTap.swift */,
+				A2E9BE4B2274056E00F9CCAD /* WaitingForBomb.swift */,
+				A2E9BE4D22740A7900F9CCAD /* Playing.swift */,
+				A2E9BE4F22741B1600F9CCAD /* GameOver.swift */,
+			);
+			path = "Game States";
+			sourceTree = "<group>";
+		};
+		A2E9BE52227420B200F9CCAD /* Player States */ = {
+			isa = PBXGroup;
+			children = (
+				A2E9BE53227420CD00F9CCAD /* Idle.swift */,
+				A2E9BE552274220200F9CCAD /* Jump.swift */,
+				A2E9BE572274230E00F9CCAD /* Fall.swift */,
+				A2E9BE592274234600F9CCAD /* Lava.swift */,
+				A2E9BE5B2274238400F9CCAD /* Dead.swift */,
+			);
+			path = "Player States";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,7 +296,9 @@
 				A2E9BE4E22740A7900F9CCAD /* Playing.swift in Sources */,
 				A2E9BE5022741B1600F9CCAD /* GameOver.swift in Sources */,
 				A22DB3782268772000FD825F /* CGVector+Extensions.swift in Sources */,
+				A2E9BE5C2274238400F9CCAD /* Dead.swift in Sources */,
 				A22DB3822268772000FD825F /* CGFloat+Extensions.swift in Sources */,
+				A2E9BE582274230E00F9CCAD /* Fall.swift in Sources */,
 				A22DB37F2268772000FD825F /* SKTEffects.swift in Sources */,
 				A22DB3542268612900FD825F /* GameScene.swift in Sources */,
 				A22DB37C2268772000FD825F /* SKAction+SpecialEffects.swift in Sources */,
@@ -273,13 +306,16 @@
 				A22DB37A2268772000FD825F /* SKTTimingFunctions.swift in Sources */,
 				A22DB3812268772000FD825F /* Vector3.swift in Sources */,
 				A22DB37B2268772000FD825F /* SKAction+Extensions.swift in Sources */,
+				A2E9BE54227420CD00F9CCAD /* Idle.swift in Sources */,
 				A22DB3562268612900FD825F /* GameViewController.swift in Sources */,
 				A2E9BE4C2274056E00F9CCAD /* WaitingForBomb.swift in Sources */,
 				A22DB3792268772000FD825F /* Int+Extensions.swift in Sources */,
 				A22DB37E2268772000FD825F /* CGPoint+Extensions.swift in Sources */,
 				A22DB37D2268772000FD825F /* SKNode+Extensions.swift in Sources */,
 				A2E9BE4A227400C800F9CCAD /* WaitingForTap.swift in Sources */,
+				A2E9BE562274220200F9CCAD /* Jump.swift in Sources */,
 				A22DB34E2268612900FD825F /* AppDelegate.swift in Sources */,
+				A2E9BE5A2274234600F9CCAD /* Lava.swift in Sources */,
 				A22DB3772268772000FD825F /* SKColor+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
