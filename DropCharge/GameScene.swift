@@ -43,12 +43,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var lastItemPosition: CGPoint = CGPoint.zero
     var lastItemHeight: CGFloat = 0.0
     var levelY: CGFloat = 0.0
-    var isPlaying: Bool = false
     let motionManager = CMMotionManager()
     var xAcceleration = CGFloat(0)
     var lava: SKSpriteNode!
     var lastUpdateTimeInterval: TimeInterval = 0
     var deltaTime: TimeInterval = 0
+    var lives = 3
+    lazy var gameState: GKStateMachine = GKStateMachine(states: [WaitingForTap(scene: self), WaitingForBomb(scene: self), Playing(scene: self), GameOver(scene: self)])
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         setupNodes()
@@ -56,6 +57,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupPlayer()
         setupCoreMotion()
         setCameraPosition(position: CGPoint(x: size.width/2, y: size.height/2))
+        gameState.enter(WaitingForTap.self)
     }
     
     func setupNodes() {
@@ -177,8 +179,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func addRandomOverlayNode() {
         let overlaySprite: SKSpriteNode!
-        let platformPercentage = (100/14.0)
-        let rnd = Double.random(in: Range<Double>(uncheckedBounds: (lower: 1, upper: 100)))
+        let platformPercentage = CGFloat(100/14.0)
+        let rnd = CGFloat.random(min: CGFloat(1), max: CGFloat(100))
         if rnd <= platformPercentage {
             overlaySprite = platform5Across
         }
@@ -232,35 +234,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !isPlaying {
-            bombDrop()
+        switch gameState.currentState {
+        case is WaitingForTap:
+            gameState.enter(WaitingForBomb.self)
+            self.run(SKAction.wait(forDuration: 2.0), completion: {
+                self.gameState.enter(Playing.self)
+            })
+        case is GameOver:
+            let newScene = GameScene(fileNamed: "GameScene")
+            newScene!.scaleMode = .aspectFill
+            let reveal = SKTransition.flipVertical(withDuration: 0.5)
+            self.view?.presentScene(newScene!, transition: reveal)
+        default:
+            break
         }
-    }
-    
-    func bombDrop() {
-        let scaleUp = SKAction.scale(to: 1.25, duration: 0.25)
-        let scaleDown = SKAction.scale(to: 1.0, duration: 0.25)
-        let sequence = SKAction.sequence([scaleUp, scaleDown])
-        let repeatSeq = SKAction.repeatForever(sequence)
-        fgNode.childNode(withName: "Bomb")!.run(SKAction.unhide())
-        fgNode.childNode(withName: "Bomb")!.run(repeatSeq)
-        run(SKAction.sequence([SKAction.wait(forDuration: 2.0), SKAction.run({
-            self.startGame();
-        })]));
-    }
-    
-    func startGame() {
-        guard (fgNode.childNode(withName: "Title") != nil) else {
-            return
-        }
-        guard (fgNode.childNode(withName: "Bomb") != nil) else {
-            return
-        }
-        fgNode.childNode(withName: "Title")!.removeFromParent()
-        fgNode.childNode(withName: "Bomb")!.removeFromParent()
-        isPlaying = true
-        player.physicsBody!.isDynamic = true
-        superBoostPlayer()
     }
     
     func setPlayerVelocity(amount: CGFloat) {
@@ -341,6 +328,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func updateCollisionLava() {
         if player.position.y < lava.position.y + 90 {
             boostPlayer()
+            lives = lives - 1
+            if lives <= 0 {
+                gameState.enter(GameOver.self)
+            }
         }
     }
     
@@ -354,12 +345,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if isPaused {
             return
         }
-        if isPlaying {
-            updateCamera()
-            updatePlayer()
-            updateLava(dt: deltaTime)
-            updateCollisionLava()
-            updateLevel()
-        }
+        gameState.update(deltaTime: deltaTime)
     }
 }

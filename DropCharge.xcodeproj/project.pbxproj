@@ -40,6 +40,10 @@
 		A2E9BE4622731B2600F9CCAD /* CoinDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2E9BE3E22731B2600F9CCAD /* CoinDiagonal.sks */; };
 		A2E9BE4722731B2600F9CCAD /* PlatformArrow.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2E9BE3F22731B2600F9CCAD /* PlatformArrow.sks */; };
 		A2E9BE4822731B2600F9CCAD /* CoinSDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2E9BE4022731B2600F9CCAD /* CoinSDiagonal.sks */; };
+		A2E9BE4A227400C800F9CCAD /* WaitingForTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9BE49227400C800F9CCAD /* WaitingForTap.swift */; };
+		A2E9BE4C2274056E00F9CCAD /* WaitingForBomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9BE4B2274056E00F9CCAD /* WaitingForBomb.swift */; };
+		A2E9BE4E22740A7900F9CCAD /* Playing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9BE4D22740A7900F9CCAD /* Playing.swift */; };
+		A2E9BE5022741B1600F9CCAD /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E9BE4F22741B1600F9CCAD /* GameOver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +82,10 @@
 		A2E9BE3E22731B2600F9CCAD /* CoinDiagonal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinDiagonal.sks; sourceTree = "<group>"; };
 		A2E9BE3F22731B2600F9CCAD /* PlatformArrow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlatformArrow.sks; sourceTree = "<group>"; };
 		A2E9BE4022731B2600F9CCAD /* CoinSDiagonal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinSDiagonal.sks; sourceTree = "<group>"; };
+		A2E9BE49227400C800F9CCAD /* WaitingForTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForTap.swift; sourceTree = "<group>"; };
+		A2E9BE4B2274056E00F9CCAD /* WaitingForBomb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForBomb.swift; sourceTree = "<group>"; };
+		A2E9BE4D22740A7900F9CCAD /* Playing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playing.swift; sourceTree = "<group>"; };
+		A2E9BE4F22741B1600F9CCAD /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +127,10 @@
 				A22DB35A2268612D00FD825F /* Assets.xcassets */,
 				A22DB35C2268612D00FD825F /* LaunchScreen.storyboard */,
 				A22DB35F2268612D00FD825F /* Info.plist */,
+				A2E9BE49227400C800F9CCAD /* WaitingForTap.swift */,
+				A2E9BE4B2274056E00F9CCAD /* WaitingForBomb.swift */,
+				A2E9BE4D22740A7900F9CCAD /* Playing.swift */,
+				A2E9BE4F22741B1600F9CCAD /* GameOver.swift */,
 			);
 			path = DropCharge;
 			sourceTree = "<group>";
@@ -250,6 +262,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2E9BE4E22740A7900F9CCAD /* Playing.swift in Sources */,
+				A2E9BE5022741B1600F9CCAD /* GameOver.swift in Sources */,
 				A22DB3782268772000FD825F /* CGVector+Extensions.swift in Sources */,
 				A22DB3822268772000FD825F /* CGFloat+Extensions.swift in Sources */,
 				A22DB37F2268772000FD825F /* SKTEffects.swift in Sources */,
@@ -260,9 +274,11 @@
 				A22DB3812268772000FD825F /* Vector3.swift in Sources */,
 				A22DB37B2268772000FD825F /* SKAction+Extensions.swift in Sources */,
 				A22DB3562268612900FD825F /* GameViewController.swift in Sources */,
+				A2E9BE4C2274056E00F9CCAD /* WaitingForBomb.swift in Sources */,
 				A22DB3792268772000FD825F /* Int+Extensions.swift in Sources */,
 				A22DB37E2268772000FD825F /* CGPoint+Extensions.swift in Sources */,
 				A22DB37D2268772000FD825F /* SKNode+Extensions.swift in Sources */,
+				A2E9BE4A227400C800F9CCAD /* WaitingForTap.swift in Sources */,
 				A22DB34E2268612900FD825F /* AppDelegate.swift in Sources */,
 				A22DB3772268772000FD825F /* SKColor+Extensions.swift in Sources */,
 			);
