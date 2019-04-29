@@ -55,7 +55,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         setupNodes()
         setupLevel()
-        //setupPlayer()
         playerState.enter(Idle.self)
         setupCoreMotion()
         setCameraPosition(position: CGPoint(x: size.width/2, y: size.height/2))
@@ -279,6 +278,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         switch other.categoryBitMask {
         case PhysicsCategory.CoinNormal:
             if let coin = other.node as? SKSpriteNode {
+                emitParticles(name: "CollectNormal", sprite: coin)
                 coin.removeFromParent()
                 jumpPlayer()
             }
@@ -289,17 +289,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
         case PhysicsCategory.PlatformBreakable:
-            if let _ = other.node as? SKSpriteNode {
-                //todo break
+            if let platform = other.node as? SKSpriteNode {
+                emitParticles(name: "BrokenPlatform", sprite: platform)
+                platform.removeFromParent()
             }
         case PhysicsCategory.CoinSpecial:
             if let coin = other.node as? SKSpriteNode {
+                emitParticles(name: "CollectSpecial", sprite: coin)
                 coin.removeFromParent()
                 superBoostPlayer()
             }
         default:
             break
         }
+    }
+    
+    func emitParticles(name: String, sprite: SKSpriteNode) {
+        let pos = fgNode.convert(sprite.position, from: sprite.parent!)
+        let particles = SKEmitterNode(fileNamed: name)!
+        particles.position = pos
+        particles.zPosition = 3
+        fgNode.addChild(particles)
+        particles.run(SKAction.removeFromParentAfterDelay(delay: 1.0))
+        sprite.run(SKAction.sequence([SKAction.scale(to: 0.0, duration: 0.5),
+                                            SKAction.removeFromParent()]))
     }
     
     func overlapAmount() -> CGFloat {

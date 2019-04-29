@@ -52,6 +52,10 @@
 		A2E9BE6022743FCA00F9CCAD /* Lava.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2E9BE5E22743FCA00F9CCAD /* Lava.sks */; };
 		A2E9BE6122743FCA00F9CCAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2E9BE5F22743FCA00F9CCAD /* Assets.xcassets */; };
 		A2E9BE632274480A00F9CCAD /* SmokeTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2E9BE622274480A00F9CCAD /* SmokeTrail.sks */; };
+		A2E9BE6822745A6E00F9CCAD /* PlayerTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2E9BE6422745A6E00F9CCAD /* PlayerTrail.sks */; };
+		A2E9BE6922745A6E00F9CCAD /* BrokenPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2E9BE6522745A6E00F9CCAD /* BrokenPlatform.sks */; };
+		A2E9BE6A22745A6E00F9CCAD /* CollectSpecial.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2E9BE6622745A6E00F9CCAD /* CollectSpecial.sks */; };
+		A2E9BE6B22745A6E00F9CCAD /* CollectNormal.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2E9BE6722745A6E00F9CCAD /* CollectNormal.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +106,10 @@
 		A2E9BE5E22743FCA00F9CCAD /* Lava.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Lava.sks; sourceTree = "<group>"; };
 		A2E9BE5F22743FCA00F9CCAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2E9BE622274480A00F9CCAD /* SmokeTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeTrail.sks; sourceTree = "<group>"; };
+		A2E9BE6422745A6E00F9CCAD /* PlayerTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlayerTrail.sks; sourceTree = "<group>"; };
+		A2E9BE6522745A6E00F9CCAD /* BrokenPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BrokenPlatform.sks; sourceTree = "<group>"; };
+		A2E9BE6622745A6E00F9CCAD /* CollectSpecial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CollectSpecial.sks; sourceTree = "<group>"; };
+		A2E9BE6722745A6E00F9CCAD /* CollectNormal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CollectNormal.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +225,10 @@
 		A2E9BE5D22743F4D00F9CCAD /* Particles */ = {
 			isa = PBXGroup;
 			children = (
+				A2E9BE6522745A6E00F9CCAD /* BrokenPlatform.sks */,
+				A2E9BE6722745A6E00F9CCAD /* CollectNormal.sks */,
+				A2E9BE6622745A6E00F9CCAD /* CollectSpecial.sks */,
+				A2E9BE6422745A6E00F9CCAD /* PlayerTrail.sks */,
 				A2E9BE5E22743FCA00F9CCAD /* Lava.sks */,
 				A2E9BE5F22743FCA00F9CCAD /* Assets.xcassets */,
 				A2E9BE622274480A00F9CCAD /* SmokeTrail.sks */,
@@ -289,13 +301,17 @@
 				A2E9BE4122731B2600F9CCAD /* CoinCross.sks in Resources */,
 				A22DB3592268612900FD825F /* Main.storyboard in Resources */,
 				A22DB3502268612900FD825F /* GameScene.sks in Resources */,
+				A2E9BE6822745A6E00F9CCAD /* PlayerTrail.sks in Resources */,
 				A2E9BE4722731B2600F9CCAD /* PlatformArrow.sks in Resources */,
 				A22DB35B2268612D00FD825F /* Assets.xcassets in Resources */,
+				A2E9BE6922745A6E00F9CCAD /* BrokenPlatform.sks in Resources */,
 				A2E9BE632274480A00F9CCAD /* SmokeTrail.sks in Resources */,
+				A2E9BE6B22745A6E00F9CCAD /* CollectNormal.sks in Resources */,
 				A2E9BE4622731B2600F9CCAD /* CoinDiagonal.sks in Resources */,
 				A22DB35E2268612D00FD825F /* LaunchScreen.storyboard in Resources */,
 				A2E9BE4322731B2600F9CCAD /* CoinSArrow.sks in Resources */,
 				A2E9BE3422731AFF00F9CCAD /* BreakArrow.sks in Resources */,
+				A2E9BE6A22745A6E00F9CCAD /* CollectSpecial.sks in Resources */,
 				A2E9BE3222730F4000F9CCAD /* Break5Across.sks in Resources */,
 				A2E9BE6122743FCA00F9CCAD /* Assets.xcassets in Resources */,
 				A2E9BE3822731B1500F9CCAD /* Coin5Across.sks in Resources */,
