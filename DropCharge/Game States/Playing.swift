@@ -23,6 +23,7 @@ class Playing: GKState {
         if previousState is WaitingForBomb {
             scene.player.physicsBody!.isDynamic = true
             scene.superBoostPlayer()
+            scene.playBackgroundMusic(name: "bgMusic.mp3")
         }
     }
     

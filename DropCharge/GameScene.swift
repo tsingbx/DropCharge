@@ -49,6 +49,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var lastUpdateTimeInterval: TimeInterval = 0
     var deltaTime: TimeInterval = 0
     var lives = 3
+    var backgroundMusic: SKAudioNode!
+    var bgMusicAlarm: SKAudioNode!
+    let soundBombDrop = SKAction.playSoundFileNamed("BombDrop.wav", waitForCompletion: false)
+    let soundSuperBoost = SKAction.playSoundFileNamed("nitro.wav", waitForCompletion: false)
+    let soundTickTock = SKAction.playSoundFileNamed("tickTock.wav", waitForCompletion: false)
+    let soundBoost = SKAction.playSoundFileNamed("boost.wav", waitForCompletion: false)
+    let soundJump = SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false)
+    let soundCoin = SKAction.playSoundFileNamed("coin1.wav", waitForCompletion: false)
+    let soundBrick = SKAction.playSoundFileNamed("brick.caf", waitForCompletion: false)
+    let soundHitLava = SKAction.playSoundFileNamed("DrownFireBug.mp3", waitForCompletion: false)
+    let soundGameOver = SKAction.playSoundFileNamed("player_die.wav", waitForCompletion: false)
+    let soundExplosions = [SKAction.playSoundFileNamed("explosion1.wav", waitForCompletion: false), SKAction.playSoundFileNamed("explosion2.wav", waitForCompletion: false), SKAction.playSoundFileNamed("explosion3.wav", waitForCompletion: false), SKAction.playSoundFileNamed("explosion4.wav", waitForCompletion: false)]
     lazy var gameState: GKStateMachine = GKStateMachine(states: [WaitingForTap(scene: self), WaitingForBomb(scene: self), Playing(scene: self), GameOver(scene: self)])
     lazy var playerState: GKStateMachine = GKStateMachine(states: [Idle(scene: self),Jump(scene: self), Fall(scene: self), Lava(scene: self), Dead(scene: self)])
     override func didMove(to view: SKView) {
@@ -59,6 +71,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupCoreMotion()
         setCameraPosition(position: CGPoint(x: size.width/2, y: size.height/2))
         gameState.enter(WaitingForTap.self)
+        playBackgroundMusic(name: "SpaceGame.caf")
+    }
+    
+    func playBackgroundMusic(name: String) {
+        var delay = 0.0
+        if backgroundMusic != nil {
+            backgroundMusic.removeFromParent()
+            if bgMusicAlarm != nil {
+                bgMusicAlarm.removeFromParent()
+            }
+            else {
+                let alarm = Bundle.main.url(forResource: "alarm", withExtension: "wav")!
+                bgMusicAlarm = SKAudioNode(url: alarm)
+                bgMusicAlarm.autoplayLooped = true
+                addChild(bgMusicAlarm)
+            }
+        }
+        else {
+            delay = 0.1
+        }
+        run(SKAction.afterDelay(delay: delay, performAction: SKAction.run({
+            let url: URL = Bundle.main.url(forResource: "SpaceGame", withExtension: "caf")!
+            self.backgroundMusic = SKAudioNode(url: url)
+            guard self.backgroundMusic != nil else {
+                return;
+            }
+            self.backgroundMusic.autoplayLooped = true
+            self.addChild(self.backgroundMusic)
+        })));
     }
     
     func setupNodes() {
@@ -279,25 +320,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case PhysicsCategory.CoinNormal:
             if let coin = other.node as? SKSpriteNode {
                 emitParticles(name: "CollectNormal", sprite: coin)
-                coin.removeFromParent()
                 jumpPlayer()
+                run(soundCoin)
             }
         case PhysicsCategory.PlatformNormal:
             if let _ = other.node as? SKSpriteNode {
                 if player.physicsBody!.velocity.dy < 0 {
                     jumpPlayer()
+                    run(soundJump)
                 }
             }
         case PhysicsCategory.PlatformBreakable:
             if let platform = other.node as? SKSpriteNode {
-                emitParticles(name: "BrokenPlatform", sprite: platform)
-                platform.removeFromParent()
+                if player.physicsBody!.velocity.dy < 0 {
+                    emitParticles(name: "BrokenPlatform", sprite: platform)
+                    jumpPlayer()
+                    run(soundBrick)
+                }
             }
         case PhysicsCategory.CoinSpecial:
             if let coin = other.node as? SKSpriteNode {
                 emitParticles(name: "CollectSpecial", sprite: coin)
-                coin.removeFromParent()
                 superBoostPlayer()
+                run(soundBoost)
             }
         default:
             break

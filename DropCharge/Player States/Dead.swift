@@ -28,6 +28,7 @@ class Dead: GKState {
             moveDownAction.timingMode = .easeIn
             let sequence = SKAction.sequence([moveUpAction, moveDownAction])
             scene.player.run(sequence)
+            scene.run(scene.soundGameOver)
         }
     }
     

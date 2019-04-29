@@ -29,6 +29,8 @@ class WaitingForBomb: GKState {
             let repeatSeq = SKAction.repeatForever(sequence)
             bomb.run(SKAction.unhide())
             bomb.run(repeatSeq)
+            scene.run(scene.soundBombDrop)
+            scene.run(SKAction.repeat(scene.soundTickTock, count: 2))
         }
     }
     
@@ -43,6 +45,7 @@ class WaitingForBomb: GKState {
             explosition.position = bomb!.position
             scene.fgNode.addChild(explosition)
             bomb?.removeFromParent()
+            scene.run(scene.soundExplosions[3])
         }
     }
 }
