@@ -46,6 +46,7 @@ class WaitingForBomb: GKState {
             scene.fgNode.addChild(explosition)
             bomb?.removeFromParent()
             scene.run(scene.soundExplosions[3])
+            scene.screenShakeByAmt(amt: 100)
         }
     }
 }

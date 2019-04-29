@@ -24,6 +24,7 @@ class Idle: GKState {
         scene.player.physicsBody!.allowsRotation = false
         scene.player.physicsBody!.categoryBitMask = PhysicsCategory.Player
         scene.player.physicsBody!.collisionBitMask = 0
+        scene.playerTrail = scene.addTrail(name: "PlayerTrail")
     }
 
 }
