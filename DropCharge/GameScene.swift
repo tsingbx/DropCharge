@@ -21,6 +21,8 @@ struct PhysicsCategory {
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    var coinRef : SKSpriteNode!
+    var coinSpecialRef : SKSpriteNode!
     var bgNode = SKNode()
     var fgNode = SKNode()
     var background: SKNode!
@@ -113,22 +115,50 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fgNode.childNode(withName: "Bomb")?.run(SKAction.hide())
         platform5Across = loadOverlayNode(fileName: "Platform5Across")
         break5Across = loadOverlayNode(fileName: "Break5Across")
-        coinArrow = loadOverlayNode(fileName: "CoinArrow")
-        coinSArrow = loadOverlayNode(fileName: "CoinSArrow")
         platformBreakArrow = loadOverlayNode(fileName: "BreakArrow");
-        coinCross = loadOverlayNode(fileName: "CoinCross")
-        coinDiagonal = loadOverlayNode(fileName: "CoinDiagonal")
-        coinS5Across = loadOverlayNode(fileName: "CoinS5Across")
-        coinSCross = loadOverlayNode(fileName: "CoinSCross")
-        coinSDiagonal = loadOverlayNode(fileName: "CoinSDiagonal")
         platformArrow = loadOverlayNode(fileName: "PlatformArrow")
         platformDiagonal = loadOverlayNode(fileName: "PlatformDiagonal")
         breakDiagonal = loadOverlayNode(fileName: "BreakDiagonal")
-        coin5Across = loadOverlayNode(fileName: "Coin5Across")
+        
+        self.loadCoins();
+        
         let cameraNode = SKCameraNode()
         addChild(cameraNode)
         camera = cameraNode
         setupLava()
+    }
+    
+    func loadCoins() {
+        coinRef = loadCoinOverlayNode(fileName: "Coin")
+        coinSpecialRef = loadCoinOverlayNode(fileName: "CoinSpecial")
+        coinCross = loadCoinOverlayNode(fileName: "CoinCross")
+        coinDiagonal = loadCoinOverlayNode(fileName: "CoinDiagonal")
+        coinS5Across = loadCoinOverlayNode(fileName: "CoinS5Across")
+        coinSCross = loadCoinOverlayNode(fileName: "CoinSCross")
+        coinSDiagonal = loadCoinOverlayNode(fileName: "CoinSDiagonal")
+        coin5Across = loadCoinOverlayNode(fileName: "Coin5Across")
+        coinArrow = loadCoinOverlayNode(fileName: "CoinArrow")
+        coinSArrow = loadCoinOverlayNode(fileName: "CoinSArrow")
+    }
+    
+    func loadCoinOverlayNode(fileName: String) -> SKSpriteNode {
+        let overlayScene = SKScene(fileNamed: fileName)!
+        let contentTemplateNode = overlayScene.childNode(withName: "Overlay") as! SKSpriteNode
+        contentTemplateNode.enumerateChildNodes(withName: "*") { (node, stop) in
+            let coinPos = node.position
+            let ref: SKSpriteNode
+            if node.name == "special" {
+                ref = self.coinSpecialRef.copy() as! SKSpriteNode
+            }
+            else {
+                ref = self.coinRef.copy() as! SKSpriteNode
+            }
+            ref.position = coinPos
+            ref.isPaused = false
+            contentTemplateNode.addChild(ref)
+            node.removeFromParent()
+        }
+        return contentTemplateNode
     }
     
     func setupLevel() {
@@ -212,7 +242,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return contentTemplateNode as! SKSpriteNode
     }
     
-    func createOverlayNode(nodeType: SKSpriteNode, flipX: Bool) {
+    func createOverlayNode(nodeType: SKSpriteNode, flipX: Bool, isCoin: Bool) {
         let platform = nodeType.copy() as! SKSpriteNode
         lastItemPosition.y = lastItemPosition.y +
             (lastItemHeight + (platform.size.height / 2.0))
@@ -222,12 +252,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             platform.xScale = -1.0
         }
         fgNode.addChild(platform)
+        if isCoin {
+            platform.isPaused = false
+        }
     }
     
     func addRandomOverlayNode() {
         let overlaySprite: SKSpriteNode!
         let platformPercentage = CGFloat(100/14.0)
         let rnd = CGFloat.random(min: CGFloat(1), max: CGFloat(100))
+        var isCoin: Bool = false
         if rnd <= platformPercentage {
             overlaySprite = platform5Across
         }
@@ -236,24 +270,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         else if (rnd <= platformPercentage * 3) {
             overlaySprite = coinSArrow
+            isCoin = true
         }
         else if (rnd <= platformPercentage * 4) {
             overlaySprite = platformBreakArrow
         }
         else if (rnd <= platformPercentage * 5) {
             overlaySprite = coinCross
+            isCoin = true
         }
         else if (rnd <= platformPercentage * 6) {
             overlaySprite = coinDiagonal
+            isCoin = true
         }
         else if (rnd <= platformPercentage * 7) {
             overlaySprite = coinS5Across;
+            isCoin = true
         }
         else if (rnd <= platformPercentage * 8) {
             overlaySprite = coinSCross
+            isCoin = true
         }
         else if (rnd <= platformPercentage * 9) {
             overlaySprite = coinSDiagonal
+            isCoin = true
         }
         else if (rnd <= platformPercentage * 10) {
             overlaySprite = platformArrow
@@ -266,14 +306,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         else if (rnd <= platformPercentage * 13) {
             overlaySprite = coin5Across
+            isCoin = true
         }
         else {
             overlaySprite = coinArrow
+            isCoin = true
         }
-        createOverlayNode(nodeType: overlaySprite, flipX: false)
+        createOverlayNode(nodeType: overlaySprite, flipX: false, isCoin: isCoin)
     }
     
     func createBackgroundNode() {
+        self.loadCoins()
         let backNode = background.copy() as! SKNode
         backNode.position = CGPoint(x: 0.0, y: levelY)
         bgNode.addChild(backNode)

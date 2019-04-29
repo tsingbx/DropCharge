@@ -46,7 +46,8 @@
 		A2793F772276D0A9008C8499 /* DrownFireBug.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A2793F652276D08E008C8499 /* DrownFireBug.mp3 */; };
 		A2793F782276D0A9008C8499 /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = A2793F662276D08E008C8499 /* alarm.wav */; };
 		A2793F792276D0A9008C8499 /* player_die.wav in Resources */ = {isa = PBXBuildFile; fileRef = A2793F672276D08E008C8499 /* player_die.wav */; };
-		A2793F7B2276DB63008C8499 /* Coin.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2793F7A2276DB63008C8499 /* Coin.sks */; };
+		A2793F80227703DA008C8499 /* CoinSpecial.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2793F7E227703DA008C8499 /* CoinSpecial.sks */; };
+		A2793F81227703DA008C8499 /* Coin.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2793F7F227703DA008C8499 /* Coin.sks */; };
 		A2E9BE3222730F4000F9CCAD /* Break5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2E9BE3122730F3F00F9CCAD /* Break5Across.sks */; };
 		A2E9BE3422731AFF00F9CCAD /* BreakArrow.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2E9BE3322731AFF00F9CCAD /* BreakArrow.sks */; };
 		A2E9BE3622731B0B00F9CCAD /* BreakDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2E9BE3522731B0B00F9CCAD /* BreakDiagonal.sks */; };
@@ -119,7 +120,8 @@
 		A2793F652276D08E008C8499 /* DrownFireBug.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DrownFireBug.mp3; sourceTree = "<group>"; };
 		A2793F662276D08E008C8499 /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarm.wav; sourceTree = "<group>"; };
 		A2793F672276D08E008C8499 /* player_die.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = player_die.wav; sourceTree = "<group>"; };
-		A2793F7A2276DB63008C8499 /* Coin.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Coin.sks; sourceTree = "<group>"; };
+		A2793F7E227703DA008C8499 /* CoinSpecial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinSpecial.sks; sourceTree = "<group>"; };
+		A2793F7F227703DA008C8499 /* Coin.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Coin.sks; sourceTree = "<group>"; };
 		A2E9BE3122730F3F00F9CCAD /* Break5Across.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Break5Across.sks; sourceTree = "<group>"; };
 		A2E9BE3322731AFF00F9CCAD /* BreakArrow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BreakArrow.sks; sourceTree = "<group>"; };
 		A2E9BE3522731B0B00F9CCAD /* BreakDiagonal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BreakDiagonal.sks; sourceTree = "<group>"; };
@@ -200,7 +202,8 @@
 		A22DB36522686FC900FD825F /* Scene Files */ = {
 			isa = PBXGroup;
 			children = (
-				A2793F7A2276DB63008C8499 /* Coin.sks */,
+				A2793F7F227703DA008C8499 /* Coin.sks */,
+				A2793F7E227703DA008C8499 /* CoinSpecial.sks */,
 				A2E9BE3322731AFF00F9CCAD /* BreakArrow.sks */,
 				A2E9BE3122730F3F00F9CCAD /* Break5Across.sks */,
 				A2E9BE3922731B2600F9CCAD /* CoinCross.sks */,
@@ -371,11 +374,13 @@
 				A2793F712276D0A9008C8499 /* explosion3.wav in Resources */,
 				A2793F722276D0A9008C8499 /* explosion2.wav in Resources */,
 				A2793F732276D0A9008C8499 /* brick.caf in Resources */,
+				A2793F80227703DA008C8499 /* CoinSpecial.sks in Resources */,
 				A2793F742276D0A9008C8499 /* explosion1.wav in Resources */,
 				A2793F752276D0A9008C8499 /* explosion4.wav in Resources */,
 				A2793F762276D0A9008C8499 /* coin1.wav in Resources */,
 				A2793F772276D0A9008C8499 /* DrownFireBug.mp3 in Resources */,
 				A2793F782276D0A9008C8499 /* alarm.wav in Resources */,
+				A2793F81227703DA008C8499 /* Coin.sks in Resources */,
 				A2793F792276D0A9008C8499 /* player_die.wav in Resources */,
 				A2E9BE4522731B2600F9CCAD /* CoinSCross.sks in Resources */,
 				A22DB369226872C900FD825F /* CoinArrow.sks in Resources */,
@@ -390,7 +395,6 @@
 				A2E9BE6922745A6E00F9CCAD /* BrokenPlatform.sks in Resources */,
 				A2E9BE632274480A00F9CCAD /* SmokeTrail.sks in Resources */,
 				A2E9BE6B22745A6E00F9CCAD /* CollectNormal.sks in Resources */,
-				A2793F7B2276DB63008C8499 /* Coin.sks in Resources */,
 				A2E9BE4622731B2600F9CCAD /* CoinDiagonal.sks in Resources */,
 				A22DB35E2268612D00FD825F /* LaunchScreen.storyboard in Resources */,
 				A2E9BE4322731B2600F9CCAD /* CoinSArrow.sks in Resources */,
